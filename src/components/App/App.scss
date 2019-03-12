@@ -1,0 +1,90 @@
+$font-family: 'Libre Franklin', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Amaranth);
+$font-weight: 700;
+$font-size: 24px;
+$bp-mobile: 400px;
+$bp-tablet: 960px;
+$height-section: 300px;
+$height-section-sm: 200px;
+$height-section-lg: 600px;
+$height-section-xl: 1200px;
+@mixin for-size($size) {
+    @if $size==phone-only {
+        @media only screen and (max-width: $bp-mobile) {
+            @content;
+        }
+    }
+    @else if $size==tablet-up {
+        @media only screen and (min-width: $bp-mobile + 1) {
+            @content;
+        }
+    }
+    @else if $size==desktop-up {
+        @media only screen and (min-width: $bp-tablet + 1) {
+            @content;
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    border: 0;
+    font-size: 100%;
+    font-family: $font-family;
+    vertical-align: baseline;
+    background-color: white;
+}
+
+
+li {
+    display: inline;
+    margin-top: 15px;
+
+    float: left;
+}
+
+nav {
+    width: 100%;
+    margin: 0 auto;
+}
+
+img.logo {
+    float: left;
+}
+
+header {
+    background: black;
+    border-bottom: 1px solid #be2323;
+    float: left;
+    width: 100%;
+    height: 50px;
+    position: auto;
+    z-index: 100;
+    ul.nav {
+        float: right;
+        list-style: none;
+    }
+    
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Amaranth', sans-serif;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+header a.active,
+header a:hover {
+    color: #3d3d3d;
+}
+
+header li {
+    margin-right: 30px;
+}
