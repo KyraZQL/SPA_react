@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Card } from 'semantic-ui-react'
+import { Button, Card, Image } from 'semantic-ui-react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './Gallery.scss'
-import Example from '../Example/Example.jsx';
-
-// import GalleryElem from './GalleryElem/GalleryElem'
-
-// import {  Gallery as GalleryCss, Genre, container } from './GalleryNav.module.scss'
 
 
 class Gallery extends Component {
@@ -34,7 +29,8 @@ class Gallery extends Component {
     this.suffix = '&language=en-US';
    
     this.mbaseUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-    this.msuffix = '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=';
+    this.msuffix = '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
+
    
     let url = `${this.baseUrl}${this.API_KEY}${this.suffix}`;
 
@@ -49,23 +45,36 @@ class Gallery extends Component {
     }).catch((error) => {
       console.log(error);
     });
+    let i = 1;
+    let getMovies = [];
+    while(i < 21) {
+      let movie_url = `${this.mbaseUrl}${this.API_KEY}${this.msuffix}${i}`;
 
-
-    let movie_url = `${this.mbaseUrl}${this.API_KEY}${this.msuffix}`;
-
-    axios.get(movie_url).then((response) => {
-      console.log(response);
-
-      this.setState({
-        movies: response.data.results,
-        filteredmovies: response.data.results,
+      axios.get(movie_url).then((response) => {
+        console.log(response);
+        // prevState.movies=>{return push(...response.data.results);}
+        // getMovies = Array.prototype.push.apply(getMovies, response.data.results);
+        getMovies.push.apply(getMovies, response.data.results);
+        console.log(getMovies);
+        getMovies.map((movie) => {
+          console.log("got movie", movie.id);
+        });
+        this.setState({
+          movies: getMovies,
+          filteredmovies: getMovies,
+        });
+      }).catch((error) => {
+        console.log(error);
       });
+      // console.log(`${movie_url}`);
+      i ++;
+    }
 
-      console.log(this.state.movies);
-    }).catch((error) => {
-      console.log(error);
+  
+    this.state.movies.map((movie) => {
+      console.log("got movie", movie.id);
     });
-    console.log(`${movie_url}`);
+    console.log(this.state.movies);
   }
 
   clickHandler(item) {
@@ -119,22 +128,20 @@ class Gallery extends Component {
         </div>
         <div className="MovieContainer"> 
           {this.state.filteredmovies.map((movie) =>(
-            <Link to={{
+            <Link key = {movie.id} to={{
               pathname: "/detail/" + movie.id, 
               state: {
                 list: this.state.filteredmovies
               }
               }}> 
-              <Card key = {movie.id}>
+              <Card>
                 <Card.Content>
+                  <Image src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
                   <Card.Header>
                       <div>
-                          <p>{movie.original_title}</p>
+                          <p className="black">{movie.original_title}</p>
                       </div>
                   </Card.Header>
-              
-                  <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-                  {/* alt={'https://image.tmdb.org/t/p/w500' + movie.backdrop_path} */}
               
                 </Card.Content>
 

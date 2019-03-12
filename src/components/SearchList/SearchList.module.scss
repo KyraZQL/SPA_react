@@ -1,3 +1,45 @@
-.SearchList {
-    padding: 0;
+$bp-mobile: 400px;
+$bp-tablet: 960px;
+
+@mixin for-size($size) {
+    @if $size==phone-only {
+        @media only screen and (max-width: $bp-mobile) {
+            @content;
+        }
+    }
+    @else if $size==tablet-up {
+        @media only screen and (min-width: $bp-mobile + 1) {
+            @content;
+        }
+    }
+    @else if $size==desktop-up {
+        @media only screen and (min-width: $bp-tablet + 1) {
+            @content;
+        }
+    }
+}
+.MovieList {
+    // columns: 1;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-gap: 6px;
+    grid-template-columns: 100%;
+    div img {
+        width: 100%;
+        height: auto;
+    }
+}
+.ListElem {
+    width: 100px;
+    // @include for-size(desktop-up) {
+        height: 100px;
+    // }
+    // @include for-size(bp-mobile) {
+        // height: 50px;        
+    // }
+    img {
+        height: 100%;
+        width: 20px;
+    }
 }

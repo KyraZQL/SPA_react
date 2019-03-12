@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import { Card, Label, Icon, Image, Container, Header} from 'semantic-ui-react'
+import { Container, Header} from 'semantic-ui-react'
 import './DetailView.module.scss'
 
 class DetailView extends Component {
@@ -134,7 +134,9 @@ class DetailView extends Component {
     }
     componentWillReceiveProps(nextProperty) {
         console.log('receive props');
-        // if(this.props.match.params !== nextProperty.match.params) {
+        // event.preventDefault();
+
+        if(this.props.match.params !== nextProperty.match.params) {
             const { id } = nextProperty.match.params;
             const { list } = nextProperty.location.state;
             this.setState({
@@ -161,37 +163,36 @@ class DetailView extends Component {
             }).catch((error) => {
                 console.log('error', error);
             });
-        // }
+        }
     }
   
     render() {
         return (
-            <Container fluid className="MovieContainer">
-              <div className="ButtonContainer">
-                <Link className="Prev" to={{
-                    pathname: "/detail/" + this.state.previd, 
-                    state: {
-                        list: this.state.properties
-                    }
-                }}>
-                   {/* <button className="Prev"> */}
-                   &#10094; Prev
-                    {/* </button> */}
-                </Link>
-                <Link className="Next" to={{
-                    pathname: "/detail/" + this.state.nextid, 
-                    state: {
-                        list: this.state.properties
-                    }
-                }}>
-                   Next &#10095;
-                </Link>
+            <Container className="DetailContainer">
+                <div className="ButtonContainer">
+                    <Link className="Prev" to={{
+                        pathname: "/detail/" + this.state.previd, 
+                        state: {
+                            list: this.state.properties
+                        }
+                    }}>
+                    &#10094; Prev
+                    </Link>
+                    <Link className="Next" to={{
+                        pathname: "/detail/" + this.state.nextid, 
+                        state: {
+                            list: this.state.properties
+                        }
+                    }}>
+                    Next &#10095;
+                    </Link>
                 </div>
-           
-               
-                <Image src={'https://image.tmdb.org/t/p/w500' + this.state.info.backdrop_path}/>
-                <p>{this.state.info.overview}</p>
-                <Header>{this.state.info.homepage}</Header>
+
+                <h1>{this.state.info.title}</h1>
+                <p className="white" color="white">{this.state.info.overview}</p>
+                <p className="white">{this.state.info.homepage}</p>
+                <img className="movie" src={'https://image.tmdb.org/t/p/w500' + this.state.info.backdrop_path}/>
+            
             </Container>
             
         );

@@ -1,17 +1,12 @@
-div {
-    text-align: center;
+.DetailContainer {
 
-}
-.ButtonContainer {
-    position: absolute;
+    width: 80%;
+    position: fixed;
+    left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
 }
-// button {
-//     width: 50px;
-//     height: auto;
-//     background-color: blue($color: #000000);
 
-// }
 
 
 .Prev,

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 
 // import SearchList from '../SearchList/SearchList.jsx'
 // 'Home' is already defined as the class name, so provide an alias
@@ -14,18 +12,6 @@ class Home extends Component {
       <div className={HomeCss}>
         <h1 className={HomeHeader}>Welcome to the MP2!</h1>
     
-        {/* <Link to="/pokemon">
-          <Button>
-            Click here to go to the demo
-          </Button>
-        </Link> */}
-        {/* <Link to="/gallery">
-          <Button>
-            Click here to go to the gallry
-          </Button>
-        </Link> */}
-        {/* <GalleryNav /> */}
-        {/* <SearchList /> */}
       </div>
     )
   }

@@ -2,6 +2,7 @@
   "name": "cs498mp2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kyrazql.github.io/CS498_mp2/",
   "dependencies": {
     "axios": "^0.18.0",
     "node-sass": "^4.11.0",
@@ -19,7 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }

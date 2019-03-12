@@ -3,11 +3,6 @@ div.Gallery {
     // position: fixed; 
     height: 100%;
     width: 100%;
-    ul {
-        display: grid;
-        grid-template-columns: repeat(10, 10%);
-        grid-template-rows: 50% 50%;
-    }
 }
 
 
@@ -17,7 +12,8 @@ div.Gallery {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(4, 25%);
+    grid-template-rows: repeat(4, 22.5%);
+    grid-gap: 6px;
 }
 .genre {
     height: 100%;
@@ -31,30 +27,16 @@ div.Gallery {
     justify-self: center;
 }
 .MovieContainer {
-    // .GalleryContainer
-    /* On the flex container */
+
     height: 100%;
-    width: 100%;
+    width: 80%;
+    margin: auto;
     display: grid;
+    grid-gap: 6px;
     grid-template-columns: repeat(4, 25%);
-    // grid-template-rows: 12px 12px 12px;
     div img {
         width: 100%;
         height: auto;
     }
-
 }
-header li {
-    color: white;
-    text-decoration: none;
-    font-family: 'Amaranth', sans-serif;
-    text-transform: uppercase;
-    font-size: 1em;
-}
-
-header li.active,
-header li:hover {
-    color: #3d3d3d;
-}
-
 
