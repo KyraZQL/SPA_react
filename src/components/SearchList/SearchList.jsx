@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Input } from 'semantic-ui-react'
+import { Button, Input, Image } from 'semantic-ui-react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-import './SearchList.module.scss'
+import { MovieList, ListElem, InfoInput, SortFeature, MovieInfo, ListElemImg } from './SearchList.module.scss'
 
 class Search extends Component {
 
@@ -15,6 +15,7 @@ class Search extends Component {
       movies: [],
       sortedmovies: [],
       sortfeature: '',
+      sortorder: '',
       showMenu: false,
     };
     this.baseUrl = 'https://api.themoviedb.org/3/search/movie?api_key=';
@@ -62,15 +63,18 @@ class Search extends Component {
     this.setState({
       sortfeature: item.target.id,
     });
-    this.setState((prevState) => {
-      return { 
-      showMenu: !(prevState.showMenu),
-      }
-    });
+    if(this.state.sortorder === "asc") {
+      this.sortByAsc();
+    } else if(this.state.sortorder === "dec") {
+      this.sortByDec();
+    }
   }
 
 
   sortByAsc() {
+    this.setState({
+      sortorder: 'asc',
+    });
     let sortedmovies = [];
     console.log('this.state', this.state);
     let movies = this.state.movies;
@@ -103,6 +107,9 @@ class Search extends Component {
   }
 
   sortByDec() {
+    this.setState({
+      sortorder: 'dec',
+    });
     let sortedmovies = [];
     console.log('this.state', this.state);
     let movies = this.state.movies;
@@ -131,7 +138,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-
+        <div className={InfoInput}>
         <Input
           onChange={this.inputChangeHandler}
           label='Search movie'
@@ -141,59 +148,50 @@ class Search extends Component {
         <Button onClick={this.clickHandler}>
           GET
         </Button>
-
-        <div className="SortFeature">
-          <Button onClick={this.showMenu}>
-            Show menu
-          </Button>
-          <div>
-            {
-              this.state.showMenu
-                ? (
-                  <div className="Menu">
-                    <Button onClick={this.changeFeature} id="title"> Title </Button>
-                    <Button onClick={this.changeFeature} id="count"> Vote Count </Button>
-                    <Button onClick={this.changeFeature} id="avg"> Vote Average </Button>
-                  </div>
-                )
-                : (
-                  null
-                )
-            }
-          </div>
+        <div className={SortFeature}>
+         
+         <div>
+           {
+             this.state.showMenu
+               ? (
+                 <div className="Menu">
+                   {/* <Button onClick={this.changeFeature} id="title"> Title </Button> */}
+                   <Button onClick={this.changeFeature} id="count"> Vote Count </Button>
+                   <Button onClick={this.changeFeature} id="avg"> Vote Average </Button>
+                   <Button onClick={this.sortByAsc}> Asc </Button> 
+                   <Button onClick={this.sortByDec}> Dec </Button>
+                 </div>
+               )
+               : (
+                 <Button onClick={this.showMenu}>
+                   Show menu
+                 </Button>
+                 
+               )
+           }
+         </div>
         </div>
-        <Button onClick={this.sortByAsc}>
-          Asc
-        </Button> 
-        <Button onClick={this.sortByDec}>
-          Dec
-        </Button>
+      
+        
+        </div>
+      
 
-        <div className="MovieList"> 
+        <div className={MovieList}> 
           {this.state.sortedmovies.map((movie) =>(
             <div key = {movie.id}>
-              <Link to={{
+              <Link className={ListElem} to={{
                 pathname: "/detail/" + movie.id, 
                 state: {
                   list: this.state.movies
                 }
               }}>
-              <div className="ListElem">
-              <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-              <p>{movie.title}</p>
-              <p>Vote Count: {movie.vote_count}</p>
-              <p>Vote Average: {movie.vote_average}</p>
+              <Image className={ListElemImg} src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
+              <div className={MovieInfo}>
+                <h2>{movie.title}</h2>
+                <p>Overview: {movie.overview}</p>
+                <p>Vote Count: {movie.vote_count} Vote Average: {movie.vote_average}</p>
+              
               </div>
-              {/* <Card>
-                <Card.Content>
-                  <img src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-                  <Card.Header>
-                      <div>
-                          <p>{movie.title}</p>
-                      </div>
-                  </Card.Header>       
-                </Card.Content>
-              </Card> */}
               </Link>
             </div>
           ))}

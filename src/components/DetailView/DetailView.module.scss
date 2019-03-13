@@ -1,14 +1,17 @@
 .DetailContainer {
 
-    width: 80%;
+    width: 70%;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
+   
 }
 
-
-
+.DetailContainerP {
+    color: white;
+}
 .Prev,
 .Next {
     cursor: pointer;
@@ -24,13 +27,9 @@
 }
 
 
-.next {
+.Next {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
-.prev:hover,
-.next:hover {
-    background-color: hsla(0, 0%, 100%, .5);
-}
 
