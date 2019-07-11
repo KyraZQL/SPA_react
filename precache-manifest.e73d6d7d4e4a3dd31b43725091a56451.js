@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/CS498_mp2/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "79b3c73f1a00f28828cf",
-    "url": "/CS498_mp2/static/css/main.0495bbb9.chunk.css"
+    "revision": "be797050b7f8b19cc61a",
+    "url": "/CS498_mp2/static/css/main.7bf60cbb.chunk.css"
   },
   {
     "revision": "6fdaa38259ada469301c",
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/CS498_mp2/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "e6d0f2e31e1914282856",
-    "url": "/CS498_mp2/static/js/2.bf5bbd20.chunk.js"
+    "revision": "6fd5fe20afd3a5717c0c",
+    "url": "/CS498_mp2/static/js/2.a64d80ad.chunk.js"
   },
   {
     "revision": "cd6c777f1945164224dee082abaea03a",
@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "url": "/CS498_mp2/static/media/outline-icons.ef60a4f6.woff"
   },
   {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/CS498_mp2/static/media/flags.9c74e172.png"
+  },
+  {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
     "url": "/CS498_mp2/static/media/outline-icons.701ae6ab.eot"
   },
@@ -36,16 +40,12 @@ self.__precacheManifest = [
     "url": "/CS498_mp2/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/CS498_mp2/static/media/flags.9c74e172.png"
-  },
-  {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
     "url": "/CS498_mp2/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "79b3c73f1a00f28828cf",
-    "url": "/CS498_mp2/static/js/main.54d4d62e.chunk.js"
+    "revision": "be797050b7f8b19cc61a",
+    "url": "/CS498_mp2/static/js/main.b3b18929.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -80,11 +80,11 @@ self.__precacheManifest = [
     "url": "/CS498_mp2/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "e6d0f2e31e1914282856",
-    "url": "/CS498_mp2/static/css/2.48071690.chunk.css"
+    "revision": "6fd5fe20afd3a5717c0c",
+    "url": "/CS498_mp2/static/css/2.01f4f395.chunk.css"
   },
   {
-    "revision": "44e345e0b68baba24eb0c563aefe2ffe",
+    "revision": "242242b939becfc2515d419a1d9b8beb",
     "url": "/CS498_mp2/index.html"
   }
 ];
